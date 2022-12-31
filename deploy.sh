@@ -1,34 +1,35 @@
 #!/bin/bash
 
-# We'll be assuming we're on a Debian/Ubuntu install for any apt-get commands
+# We'll be assuming we're on a Debian/Ubuntu install for any apt-install commands
 # Otherwise we'll build from source if possible for things like amass
 
 TOOLS_DIR="~/tools"
 echo "Installing all tools..."
 
 # Project Discovery tools
-GO111MODULE=on go get -v -u github.com/projectdiscovery/subfinder/v2/cmd/subfinder
-GO111MODULE=on go get -v -u github.com/projectdiscovery/httpx/cmd/httpx
-GO111MODULE=on go get -v -u github.com/projectdiscovery/nuclei/v2/cmd/nuclei
+go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 nuclei -update-templates
-GO111MODULE=on go get -v -u github.com/projectdiscovery/naabu/v2/cmd/naabu
-GO111MODULE=on go get -v -u github.com/projectdiscovery/dnsx/cmd/dnsx
-GO111MODULE=on go get -v -u github.com/projectdiscovery/proxify/cmd/proxify
-GO111MODULE=on go get -v -u github.com/projectdiscovery/mapcidr/cmd/mapcidr
-GO111MODULE=on go get -v -u github.com/projectdiscovery/notify/cmd/notify
-GO111MODULE=on go get -v -u github.com/projectdiscovery/chaos-client/cmd/chaos
-GO111MODULE=on go get -v -u github.com/projectdiscovery/shuffledns/cmd/shuffledns
-GO111MODULE=on go get -v -u github.com/projectdiscovery/interactsh/cmd/interactsh-client
+GO111MODULE=on go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
+GO111MODULE=on go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
+GO111MODULE=on go install -v github.com/projectdiscovery/proxify/cmd/proxify@latest
+GO111MODULE=on go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest
+GO111MODULE=on go install -v github.com/projectdiscovery/notify/cmd/notify@latest
+GO111MODULE=on go install -v github.com/projectdiscovery/chaos-client/cmd/chaos@latest
+GO111MODULE=on go install -v github.com/projectdiscovery/shuffledns/cmd/shuffledns@latest
+GO111MODULE=on go install -v github.com/projectdiscovery/interactsh/cmd/interactsh-client@latest
 
 # Web recon/fuzzer stuff
-go get -u -v github.com/ffuf/ffuf
-go get -u -v github.com/lc/gau
-go get -u -v github.com/tomnomnom/assetfinder
-go get -u -v github.com/tomnomnom/waybackurls
-go get -u -v github.com/iamstoxe/urlgrab
-go get -u -v github.com/hakluke/hakrawler
-GO111MODULE=on go get -v github.com/OWASP/Amass/v3/...
+go install -v github.com/ffuf/ffuf@latest
+go install -v github.com/lc/gau@latest
+go install -v github.com/tomnomnom/assetfinder@latest
+go install -v github.com/tomnomnom/waybackurls@latest
+go install -v github.com/tomnomnom/anew@latest
+go install -u github.com/iamstoxe/urlgrab@latest
+go install -v github.com/hakluke/hakrawler@latest
+go install -v github.com/OWASP/Amass/v3/...@latest
 
 
 # XSS Stuff
-GO111MODULE=on go get -v github.com/hahwul/dalfox/v2
+GO111MODULE=on go install -v github.com/hahwul/dalfox/v2@latest
